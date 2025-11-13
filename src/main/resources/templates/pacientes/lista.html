@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacientes - Fisioterapia</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <img th:src="@{/images/logo.png}" alt="Logo" class="app-logo">
+            <p class="logo-text">Laboratório de Fisiologia do Exercício</p>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a th:href="@{/}">
+                        <i class="fas fa-home"></i> <span>Início</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/pacientes}" class="active">
+                        <i class="fas fa-users"></i> <span>Pacientes</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-header">
+            <h1>Pacientes</h1>
+        </div>
+        <div class="content-body">
+            <!-- Header com busca e botão -->
+            <div class="pacientes-header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <form th:action="@{/pacientes}" method="get">
+                        <input type="text" name="search" placeholder="Procurar por nome ou por email" th:value="${param.search}">
+                    </form>
+                </div>
+                <button class="btn-primary" onclick="openModal('adicionarPacienteModal')">Adicionar pacientes!</button>
+            </div>
+
+            <!-- Tabela de Pacientes -->
+            <div th:if="${not #lists.isEmpty(pacientes)}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Endereço</th>
+                            <th>Observações</th>
+                            <th>Idade</th>
+                            <th>Horário</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="paciente : ${pacientes}" th:onclick="'window.location.href=\'/pacientes/' + ${paciente.id} + '\''">
+                            <td>
+                                <i th:if="${paciente.possuiDiabetes}" class="fas fa-star"></i>
+                                <span th:text="${paciente.nomeCompleto}"></span>
+                            </td>
+                            <td th:text="${paciente.telefone}"></td>
+                            <td th:text="${paciente.endereco ?: '------'}"></td>
+                            <td th:text="${paciente.observacoesGerais ?: '------'}"></td>
+                            <td th:text="${paciente.idade}"></td>
+                            <td th:text="${paciente.horarioAtendimento != null ? #temporals.format(paciente.horarioAtendimento, 'HH:mm') : ''}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Mensagem quando não há pacientes -->
+            <div th:if="${#lists.isEmpty(pacientes)}" class="empty-state">
+                <h2>Sem pacientes por enquanto...</h2>
+                <p>Eles irão aparecer assim que você adiciona-los!</p>
+            </div>
+
+            <!-- Modal de Adicionar Paciente -->
+            <div id="adicionarPacienteModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('adicionarPacienteModal')">&times;</span>
+                    <h2>Adicionar paciente!</h2>
+                    <form th:action="@{/pacientes/adicionar}" method="post">
+                        <div class="form-group">
+                            <label for="nomeCompleto">Nome completo</label>
+                            <input type="text" id="nomeCompleto" name="nomeCompleto" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dataNascimento">Data de nascimento</label>
+                                <input type="date" id="dataNascimento" name="dataNascimento" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="horarioAtendimento">Horário</label>
+                                <input type="time" id="horarioAtendimento" name="horarioAtendimento">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="observacoesGerais">Observações Gerais</label>
+                            <input type="text" id="observacoesGerais" name="observacoesGerais">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="endereco">Endereço</label>
+                                <input type="text" id="endereco" name="endereco">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="genero">Gênero</label>
+                                <select id="genero" name="genero">
+                                    <option value="">Selecione</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
+                                    <option value="Outro">Outro</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sobreOPaciente">Sobre o paciente</label>
+                            <textarea id="sobreOPaciente" name="sobreOPaciente" rows="4" placeholder="Informações detalhadas sobre o paciente, histórico médico, etc."></textarea>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="possuiDiabetes" name="possuiDiabetes" value="true">
+                            <label for="possuiDiabetes">Possui diabetes?</label>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="menorDe18Anos" name="menorDe18Anos" value="true">
+                            <label for="menorDe18Anos">É menor que 18 anos?</label>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="closeModal('adicionarPacienteModal')">Cancelar</button>
+                            <button type="submit" class="btn-primary">Confirmar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

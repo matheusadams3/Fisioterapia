@@ -1,0 +1,713 @@
+/* ============================================
+   VARIÁVEIS DE CORES
+   ============================================ */
+:root {
+    --primary-blue: #5DADE2;
+    --dark-blue: #1e3a8a;
+    --sidebar-bg: #1e3a8a;
+    --sidebar-active: #60a5fa;
+    --white: #ffffff;
+    --light-gray: #f5f5f5;
+    --gray: #e0e0e0;
+    --text-dark: #333333;
+    --text-light: #666666;
+    --border-color: #e0e0e0;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --modal-overlay: rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   RESET E CONFIGURAÇÕES GLOBAIS
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--light-gray);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* ============================================
+   LAYOUT PRINCIPAL
+   ============================================ */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+.sidebar {
+    width: 255px;
+    background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
+    color: var(--white);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    box-shadow: 4px 0 10px var(--shadow);
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+.logo-container {
+    text-align: center;
+    padding: 30px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--white);
+    padding: 10px;
+    margin-bottom: 15px;
+    object-fit: contain;
+}
+
+.logo-text {
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--white);
+    font-weight: 400;
+}
+
+/* Menu de Navegação */
+.menu {
+    flex: 1;
+    padding: 20px 0;
+}
+
+.menu ul {
+    list-style: none;
+}
+
+.menu li {
+    margin: 0;
+}
+
+.menu a {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    gap: 12px;
+}
+
+.menu a i {
+    font-size: 18px;
+    width: 20px;
+}
+
+.menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu a.active {
+    background-color: var(--sidebar-active);
+    border-radius: 10px;
+    margin: 0 15px;
+    font-weight: 500;
+}
+
+/* ============================================
+   CONTEÚDO PRINCIPAL
+   ============================================ */
+.main-content {
+    flex: 1;
+    margin-left: 255px;
+    padding: 40px;
+    background-color: var(--light-gray);
+}
+
+.content-header {
+    margin-bottom: 30px;
+}
+
+.content-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.content-body {
+    background-color: var(--white);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 2px 10px var(--shadow);
+}
+
+/* ============================================
+   HEADER DE PACIENTES
+   ============================================ */
+.pacientes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.search-bar {
+    flex: 1;
+    max-width: 400px;
+    position: relative;
+}
+
+.search-bar i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-bar input:focus {
+    border-color: var(--primary-blue);
+}
+
+/* ============================================
+   BOTÕES
+   ============================================ */
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(93, 173, 226, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #4a9fd8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(93, 173, 226, 0.4);
+}
+
+.btn-secondary {
+    background-color: var(--gray);
+    color: var(--text-dark);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #d0d0d0;
+}
+
+/* ============================================
+   TABELA DE PACIENTES
+   ============================================ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: var(--light-gray);
+}
+
+thead th {
+    padding: 15px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+tbody td {
+    padding: 18px 15px;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+tbody tr td:first-child {
+    font-weight: 500;
+}
+
+/* Ícone de estrela para pacientes com diabetes */
+tbody tr td i.fa-star {
+    color: #fbbf24;
+    margin-right: 8px;
+}
+
+/* ============================================
+   MENSAGEM DE LISTA VAZIA
+   ============================================ */
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.empty-state h2 {
+    font-size: 24px;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    font-size: 16px;
+    color: var(--text-light);
+}
+
+/* ============================================
+   MODAL
+   ============================================ */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--modal-overlay);
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background-color: var(--white);
+    margin: 3% auto;
+    padding: 40px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.3s;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: var(--text-dark);
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+}
+
+/* ============================================
+   FORMULÁRIOS
+   ============================================ */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-blue);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+}
+
+/* Botões do formulário */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* ============================================
+   PÁGINA DE DETALHES DO PACIENTE
+   ============================================ */
+.paciente-header-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.paciente-header-info h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.paciente-header-info i.fa-star {
+    color: #fbbf24;
+    font-size: 20px;
+}
+
+.paciente-horario {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-light);
+    font-size: 16px;
+}
+
+.sobre-paciente-section {
+    margin-bottom: 30px;
+}
+
+.sobre-paciente-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.sobre-paciente-section p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-light);
+}
+
+/* Calendário de Presença */
+.calendario-section {
+    margin-bottom: 30px;
+}
+
+.calendario-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.calendario-mes {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.calendario-dia-header {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-light);
+    padding: 10px;
+}
+
+.calendario-dia {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.calendario-dia:hover {
+    transform: scale(1.1);
+}
+
+.calendario-dia.sem-aula {
+    background-color: #e5e7eb;
+    color: #9ca3af;
+}
+
+.calendario-dia.presenca {
+    background-color: #86efac;
+    color: #166534;
+}
+
+.calendario-dia.falta {
+    background-color: #fca5a5;
+    color: #991b1b;
+}
+
+.calendario-dia.falta-justificada {
+    background-color: #fcd34d;
+    color: #92400e;
+}
+
+.calendario-dia.alta-temporaria {
+    background-color: #a5f3fc;
+    color: #164e63;
+}
+
+/* Legenda do Calendário */
+.calendario-legenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.legenda-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.legenda-cor {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+/* Card de Informações Adicionais */
+.resumo-paciente-card {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px var(--shadow);
+}
+
+.resumo-paciente-card h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.info-adicional p {
+    margin: 12px 0;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+.info-adicional strong {
+    color: var(--text-light);
+    min-width: 180px;
+    display: inline-block;
+    font-weight: 500;
+}
+
+/* ============================================
+   DASHBOARD / TELA INICIAL
+   ============================================ */
+.welcome-card {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    border-radius: 20px;
+    padding: 60px;
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+}
+
+.welcome-text h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.welcome-text p {
+    font-size: 20px;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+.welcome-date {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.welcome-figure img {
+    max-width: 400px;
+    height: auto;
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+        border-radius: 0;
+    }
+    
+    .logo-container {
+        padding: 20px 10px;
+    }
+    
+    .app-logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .logo-text {
+        display: none;
+    }
+    
+    .menu a {
+        justify-content: center;
+        padding: 15px;
+    }
+    
+    .menu a span {
+        display: none;
+    }
+    
+    .main-content {
+        margin-left: 70px;
+        padding: 20px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .welcome-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+    
+    .welcome-figure {
+        margin-top: 30px;
+    }
+}
+
+/* ============================================
+   UTILITÁRIOS
+   ============================================ */
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
