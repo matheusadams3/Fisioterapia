@@ -1,713 +1,338 @@
-/* ============================================
-   VARIÁVEIS DE CORES
-   ============================================ */
-:root {
-    --primary-blue: #5DADE2;
-    --dark-blue: #1e3a8a;
-    --sidebar-bg: #1e3a8a;
-    --sidebar-active: #60a5fa;
-    --white: #ffffff;
-    --light-gray: #f5f5f5;
-    --gray: #e0e0e0;
-    --text-dark: #333333;
-    --text-light: #666666;
-    --border-color: #e0e0e0;
-    --shadow: rgba(0, 0, 0, 0.1);
-    --modal-overlay: rgba(0, 0, 0, 0.5);
-}
-
-/* ============================================
-   RESET E CONFIGURAÇÕES GLOBAIS
-   ============================================ */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background-color: var(--light-gray);
-    color: var(--text-dark);
-    line-height: 1.6;
+  background-color: #f9f9fb;
+  font-family: "Segoe UI", sans-serif;
 }
 
-/* ============================================
-   LAYOUT PRINCIPAL
-   ============================================ */
-.app-container {
-    display: flex;
-    min-height: 100vh;
-}
-
-/* ============================================
-   SIDEBAR
-   ============================================ */
 .sidebar {
-    width: 255px;
-    background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
-    color: var(--white);
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    box-shadow: 4px 0 10px var(--shadow);
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
+  background-color: #112052;
+  width: 240px;
+  min-height: 100vh;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
 }
 
 .logo-container {
-    text-align: center;
-    padding: 30px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 20px 0;
 }
 
-.app-logo {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background-color: var(--white);
-    padding: 10px;
-    margin-bottom: 15px;
-    object-fit: contain;
+.logo-container img {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
-.logo-text {
-    font-size: 12px;
-    line-height: 1.4;
-    color: var(--white);
-    font-weight: 400;
+.nav-link {
+  opacity: 0.9;
+  border-radius: 8px;
+  transition: background 0.2s;
 }
 
-/* Menu de Navegação */
-.menu {
-    flex: 1;
-    padding: 20px 0;
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.menu ul {
-    list-style: none;
+.nav-link.active {
+  background: #2c3e73;
 }
 
-.menu li {
-    margin: 0;
+main h2 {
+  color: #333;
 }
 
-.menu a {
-    display: flex;
-    align-items: center;
-    padding: 15px 30px;
-    color: var(--white);
-    text-decoration: none;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    gap: 12px;
-}
-
-.menu a i {
-    font-size: 18px;
-    width: 20px;
-}
-
-.menu a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.menu a.active {
-    background-color: var(--sidebar-active);
-    border-radius: 10px;
-    margin: 0 15px;
-    font-weight: 500;
-}
-
-/* ============================================
-   CONTEÚDO PRINCIPAL
-   ============================================ */
-.main-content {
-    flex: 1;
-    margin-left: 255px;
-    padding: 40px;
-    background-color: var(--light-gray);
-}
-
-.content-header {
-    margin-bottom: 30px;
-}
-
-.content-header h1 {
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.content-body {
-    background-color: var(--white);
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 2px 10px var(--shadow);
-}
-
-/* ============================================
-   HEADER DE PACIENTES
-   ============================================ */
-.pacientes-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    gap: 20px;
-}
-
-.search-bar {
-    flex: 1;
-    max-width: 400px;
-    position: relative;
-}
-
-.search-bar i {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-light);
-}
-
-.search-bar input {
-    width: 100%;
-    padding: 12px 15px 12px 45px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-.search-bar input:focus {
-    border-color: var(--primary-blue);
-}
-
-/* ============================================
-   BOTÕES
-   ============================================ */
 .btn-primary {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    padding: 12px 30px;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(93, 173, 226, 0.3);
+  background-color: #4a90e2;
+  border: none;
 }
 
 .btn-primary:hover {
-    background-color: #4a9fd8;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(93, 173, 226, 0.4);
+  background-color: #357ac9;
 }
 
-.btn-secondary {
-    background-color: var(--gray);
-    color: var(--text-dark);
-    padding: 12px 30px;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.btn-outline-secondary {
+  border-color: #d0d0d0;
+  color: #444;
+  background-color: white;
 }
 
-.btn-secondary:hover {
-    background-color: #d0d0d0;
-}
-
-/* ============================================
-   TABELA DE PACIENTES
-   ============================================ */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-thead {
-    background-color: var(--light-gray);
-}
-
-thead th {
-    padding: 15px;
-    text-align: left;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-light);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-tbody tr {
-    border-bottom: 1px solid var(--border-color);
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-tbody tr:hover {
-    background-color: #f9fafb;
-}
-
-tbody td {
-    padding: 18px 15px;
-    font-size: 14px;
-    color: var(--text-dark);
-}
-
-tbody tr td:first-child {
-    font-weight: 500;
-}
-
-/* Ícone de estrela para pacientes com diabetes */
-tbody tr td i.fa-star {
-    color: #fbbf24;
-    margin-right: 8px;
-}
-
-/* ============================================
-   MENSAGEM DE LISTA VAZIA
-   ============================================ */
-.empty-state {
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.empty-state h2 {
-    font-size: 24px;
-    color: var(--text-dark);
-    margin-bottom: 10px;
-}
-
-.empty-state p {
-    font-size: 16px;
-    color: var(--text-light);
-}
-
-/* ============================================
-   MODAL
-   ============================================ */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: var(--modal-overlay);
-    animation: fadeIn 0.3s;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.btn-outline-secondary:hover {
+  background-color: #f1f1f1;
+  border-color: #c0c0c0;
 }
 
 .modal-content {
-    background-color: var(--white);
-    margin: 3% auto;
-    padding: 40px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 800px;
-    position: relative;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    animation: slideDown 0.3s;
+  border-radius: 12px;
 }
 
-@keyframes slideDown {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+.modal-title {
+  color: #333;
 }
 
-.close {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 28px;
-    font-weight: 300;
-    color: var(--text-light);
-    cursor: pointer;
-    transition: color 0.3s;
+.form-control,
+.form-select {
+  border: 1.5px solid #b0b0b0 !important;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
 }
 
-.close:hover {
-    color: var(--text-dark);
+.form-control:focus,
+.form-select:focus {
+  border-color: #4a90e2 !important;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.25);
 }
 
-.modal-content h2 {
-    font-size: 24px;
-    margin-bottom: 30px;
-    color: var(--text-dark);
+.form-label {
+  font-weight: 500;
+  color: #333;
 }
 
-/* ============================================
-   FORMULÁRIOS
-   ============================================ */
-.form-group {
-    margin-bottom: 20px;
+#btnAdicionarCampo {
+  border-color: #d0d0d0;
+  color: #333;
+  background-color: #fff;
+  transition: 0.2s;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-dark);
+#btnAdicionarCampo:hover {
+  background-color: #f1f1f1;
+  border-color: #c0c0c0;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 14px;
-    font-family: inherit;
-    outline: none;
-    transition: border-color 0.3s;
+.search-bar {
+  max-width: 400px;
+  position: relative;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    border-color: var(--primary-blue);
+.search-bar input {
+  border: 1.5px solid #b0b0b0;
+  border-radius: 30px;
+  padding: 10px 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
 }
 
-.form-group textarea {
-    resize: vertical;
-    min-height: 100px;
+.search-bar input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+  outline: none;
 }
 
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+.search-bar button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
-.checkbox-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.search-bar button:hover {
+  transform: scale(1.1);
 }
 
-.checkbox-group label {
-    margin-bottom: 0;
-    font-weight: 400;
+.search-bar i {
+  font-size: 1.2rem;
+  color: #4a90e2;
 }
 
-.checkbox-group input[type="checkbox"] {
-    width: auto;
-    margin-right: 8px;
+.editable-field {
+  background-color: #fafafa;
+  transition: box-shadow 0.2s ease;
 }
 
-/* Botões do formulário */
-.form-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-    margin-top: 30px;
+.editable-field:focus-within {
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
 }
 
-/* ============================================
-   PÁGINA DE DETALHES DO PACIENTE
-   ============================================ */
-.paciente-header-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border-color);
+.field-title {
+  font-weight: 500;
+  border: 1px dashed #bbb;
+  transition: border-color 0.2s ease;
 }
 
-.paciente-header-info h2 {
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--text-dark);
+.field-title:focus {
+  border-color: #4a90e2;
 }
 
-.paciente-header-info i.fa-star {
-    color: #fbbf24;
-    font-size: 20px;
+.saved-label-container {
+  gap: 0.5rem;
 }
 
-.paciente-horario {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--text-light);
-    font-size: 16px;
+.saved-label {
+  font-weight: 600;
+  color: #333;
 }
 
-.sobre-paciente-section {
-    margin-bottom: 30px;
+.saved-delete {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.45rem;
 }
 
-.sobre-paciente-section h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: var(--text-dark);
+.btn-delete {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.sobre-paciente-section p {
-    font-size: 14px;
-    line-height: 1.8;
-    color: var(--text-light);
+.table-custom {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-/* Calendário de Presença */
-.calendario-section {
-    margin-bottom: 30px;
+.table-custom thead {
+  background-color: #f2f4f8;
+  color: #333;
+  font-weight: 600;
 }
 
-.calendario-section h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: var(--text-dark);
+.table-custom th {
+  border-bottom: 2px solid #e0e0e0;
+  padding: 12px 16px;
+  font-size: 0.95rem;
 }
 
-.calendario-mes {
-    text-align: center;
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 15px;
-    color: var(--text-dark);
+.table-custom td {
+  padding: 12px 16px;
+  color: #444;
+  vertical-align: middle;
 }
 
-.calendario-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
+.table-custom tbody tr:nth-child(even) {
+  background-color: #f9f9fb;
 }
 
-.calendario-dia-header {
-    text-align: center;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-light);
-    padding: 10px;
+.table-custom tbody tr:hover {
+  background-color: #eef4ff;
+  transition: 0.2s;
 }
 
-.calendario-dia {
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
+.table-custom button {
+  border-radius: 6px;
+  padding: 4px 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
 }
 
-.calendario-dia:hover {
-    transform: scale(1.1);
+.table-custom button:hover {
+  background-color: #4a90e2;
+  color: #fff;
+  border-color: #4a90e2;
 }
 
-.calendario-dia.sem-aula {
-    background-color: #e5e7eb;
-    color: #9ca3af;
+.tabela-pacientes h2 {
+  color: #112052;
+  font-weight: 600;
 }
 
-.calendario-dia.presenca {
-    background-color: #86efac;
-    color: #166534;
+.tabela-pacientes .search-bar input {
+  max-width: 300px;
+  border-radius: 30px;
+  padding-left: 15px;
 }
 
-.calendario-dia.falta {
-    background-color: #fca5a5;
-    color: #991b1b;
+.editable-field {
+  background-color: #fff;
+  transition: all 0.2s ease;
 }
 
-.calendario-dia.falta-justificada {
-    background-color: #fcd34d;
-    color: #92400e;
+.editable-field:hover {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
-.calendario-dia.alta-temporaria {
-    background-color: #a5f3fc;
-    color: #164e63;
+.table-custom th {
+  background-color: #f8f9fc;
+  color: #555;
+  font-weight: 600;
 }
 
-/* Legenda do Calendário */
-.calendario-legenda {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 20px;
+.table-custom td {
+  vertical-align: middle;
 }
 
-.legenda-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
+.login-body {
+  background: linear-gradient(135deg, #112052, #2c3e73);
+  min-height: 100vh;
 }
 
-.legenda-cor {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+.login-card {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  animation: fadeInUp 0.5s ease;
 }
 
-/* Card de Informações Adicionais */
-.resumo-paciente-card {
-    background-color: var(--white);
-    border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 20px;
-    box-shadow: 0 1px 3px var(--shadow);
+.text-primary-clinica {
+  color: #112052 !important;
 }
 
-.resumo-paciente-card h2 {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: var(--text-dark);
+.login-card .form-control {
+  border-radius: 8px;
+  border: 1.5px solid #b0b0b0;
+  transition: all 0.2s ease;
 }
 
-.info-adicional p {
-    margin: 12px 0;
-    font-size: 15px;
-    line-height: 1.8;
-    color: var(--text-dark);
+.login-card .form-control:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.25);
 }
 
-.info-adicional strong {
-    color: var(--text-light);
-    min-width: 180px;
-    display: inline-block;
-    font-weight: 500;
+.login-card .btn-primary {
+  background-color: #4a90e2;
+  border: none;
+  font-weight: 500;
+  transition: all 0.2s;
 }
 
-/* ============================================
-   DASHBOARD / TELA INICIAL
-   ============================================ */
-.welcome-card {
-    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-    border-radius: 20px;
-    padding: 60px;
-    color: var(--white);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-    box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+.login-card .btn-primary:hover {
+  background-color: #357ac9;
+  transform: translateY(-2px);
 }
 
-.welcome-text h1 {
-    font-size: 48px;
-    font-weight: 700;
-    margin-bottom: 15px;
+.login-card a:hover {
+  text-decoration: underline;
 }
 
-.welcome-text p {
-    font-size: 20px;
-    opacity: 0.9;
-    margin-bottom: 30px;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.welcome-date {
-    font-size: 16px;
-    opacity: 0.8;
+.btn-olho {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  padding: 0;
+  color: #888;
+  cursor: pointer;
 }
 
-.welcome-figure img {
-    max-width: 400px;
-    height: auto;
+.btn-olho:hover {
+  color: #4a90e2;
 }
 
-/* ============================================
-   RESPONSIVIDADE
-   ============================================ */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 70px;
-        border-radius: 0;
-    }
-    
-    .logo-container {
-        padding: 20px 10px;
-    }
-    
-    .app-logo {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .logo-text {
-        display: none;
-    }
-    
-    .menu a {
-        justify-content: center;
-        padding: 15px;
-    }
-    
-    .menu a span {
-        display: none;
-    }
-    
-    .main-content {
-        margin-left: 70px;
-        padding: 20px;
-    }
-    
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-    
-    .welcome-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 40px 20px;
-    }
-    
-    .welcome-figure {
-        margin-top: 30px;
-    }
+.btn-olho:focus {
+  outline: none;
+  box-shadow: none;
 }
 
-/* ============================================
-   UTILITÁRIOS
-   ============================================ */
-.text-center {
-    text-align: center;
-}
-
-.mt-20 {
-    margin-top: 20px;
-}
-
-.mb-20 {
-    margin-bottom: 20px;
-}
-
-.hidden {
-    display: none !important;
+.table-custom td.bg-diabetes {
+  background-color: #3c84d6 !important;
+  color: white !important;
 }
