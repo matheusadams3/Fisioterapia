@@ -15,9 +15,9 @@ public class PacienteDTO {
     private String genero;
     private String observacoesGerais;
     private String sobreOPaciente;
-    private Boolean possuiDiabetes;
-    private Boolean menorDe18Anos;
-    private Boolean emDestaque;
+    private boolean possuiDiabetes;
+    private boolean menorDe18Anos;
+    private boolean emDestaque;
     private Integer idade;
 
     public PacienteDTO(Paciente paciente) {
@@ -30,9 +30,9 @@ public class PacienteDTO {
         this.genero = paciente.getGenero();
         this.observacoesGerais = paciente.getObservacoesGerais();
         this.sobreOPaciente = paciente.getSobreOPaciente();
-        this.possuiDiabetes = paciente.getPossuiDiabetes();
-        this.menorDe18Anos = paciente.getMenorDe18Anos();
-        this.emDestaque = paciente.getEmDestaque();
+        this.possuiDiabetes = paciente.isPossuiDiabetes();
+        this.menorDe18Anos = paciente.isMenorDe18Anos();
+        this.emDestaque = paciente.isEmDestaque();
         
         // Calcular idade
         if (paciente.getDataNascimento() != null) {
@@ -77,15 +77,15 @@ public class PacienteDTO {
         return sobreOPaciente;
     }
 
-    public Boolean getPossuiDiabetes() {
+    public boolean getPossuiDiabetes() {
         return possuiDiabetes;
     }
 
-    public Boolean getMenorDe18Anos() {
+    public boolean getMenorDe18Anos() {
         return menorDe18Anos;
     }
 
-    public Boolean getEmDestaque() {
+    public boolean getEmDestaque() {
         return emDestaque;
     }
 

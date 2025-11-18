@@ -20,9 +20,9 @@ public class Paciente {
     private String observacoesGerais;
     @Column(columnDefinition = "TEXT")
     private String sobreOPaciente;
-    private Boolean possuiDiabetes = false;
-    private Boolean menorDe18Anos = false;
-    private Boolean emDestaque = false;
+    private boolean possuiDiabetes = false;
+    private boolean menorDe18Anos = false;
+    private boolean emDestaque = false;
 
     // Construtor padrão
     public Paciente() {
@@ -101,7 +101,7 @@ public class Paciente {
         this.sobreOPaciente = sobreOPaciente;
     }
 
-    public Boolean getPossuiDiabetes() {
+    public boolean isPossuiDiabetes() {
         return possuiDiabetes;
     }
 
@@ -109,7 +109,7 @@ public class Paciente {
         this.possuiDiabetes = possuiDiabetes;
     }
 
-    public Boolean getMenorDe18Anos() {
+    public boolean isMenorDe18Anos() {
         return menorDe18Anos;
     }
 
@@ -117,7 +117,7 @@ public class Paciente {
         this.menorDe18Anos = menorDe18Anos;
     }
 
-    public Boolean getEmDestaque() {
+    public boolean isEmDestaque() {
         return emDestaque;
     }
 

@@ -23,12 +23,8 @@ public class PacienteService {
     }
 
     public Paciente save(Paciente paciente) {
-        // Lógica para definir se o paciente deve estar em destaque
-        if (paciente.getPossuiDiabetes() != null && paciente.getPossuiDiabetes()) {
-            paciente.setEmDestaque(true);
-        } else {
-            paciente.setEmDestaque(false);
-        }
+        Boolean possuiDiabetes = (Boolean) paciente.isPossuiDiabetes();
+        paciente.setEmDestaque(Boolean.valueOf(possuiDiabetes != null && possuiDiabetes));
         return pacienteRepository.save(paciente);
     }
 
