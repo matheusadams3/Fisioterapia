@@ -3,6 +3,7 @@ package com.adsimepac.fisioterapia.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 public class Paciente {
@@ -23,6 +24,15 @@ public class Paciente {
     private boolean possuiDiabetes = false;
     private boolean menorDe18Anos = false;
     private boolean emDestaque = false;
+
+    @OneToOne(mappedBy = "paciente")
+    private FichaAnamnese fichaAnamnese;
+
+    @ManyToMany(mappedBy = "pacientes")
+    private List<DiaTreino> diasTreino;
+
+    @OneToMany(mappedBy = "paciente")
+    private List<Avaliacao> avaliacoes;
 
     // Construtor padrão
     public Paciente() {
