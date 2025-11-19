@@ -5,8 +5,11 @@ import com.adsimepac.fisioterapia.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PacienteService {
@@ -23,14 +26,10 @@ public class PacienteService {
     }
 
     public Paciente save(Paciente paciente) {
-        // Lógica para definir se o paciente deve estar em destaque
-        if (paciente.getPossuiDiabetes() != null && paciente.getPossuiDiabetes()) {
-            paciente.setEmDestaque(true);
-        } else {
-            paciente.setEmDestaque(false);
-        }
+
         return pacienteRepository.save(paciente);
     }
+
 
     public void deleteById(Long id) {
         pacienteRepository.deleteById(id);
@@ -41,5 +40,80 @@ public class PacienteService {
             return findAll();
         }
         return pacienteRepository.findByNomeCompletoContainingIgnoreCase(termo);
+    }
+
+
+    // ---------------------------------------------------------
+    // 🎯 FILTRO COMPLETO: GÊNERO | FAIXA ETÁRIA | STATUS
+    // ---------------------------------------------------------
+    public List<Paciente> filtrarPacientes(String genero, String faixaEtaria, String status) {
+
+        return pacienteRepository.findAll().stream()
+                .filter(p -> filtrarGenero(p, genero))
+                .filter(p -> filtrarFaixaEtaria(p, faixaEtaria))
+                .filter(p -> filtrarStatus(p, status))
+                .collect(Collectors.toList());
+    }
+
+
+    // -------------------------------
+    // GÊNERO
+    // -------------------------------
+    private boolean filtrarGenero(Paciente p, String genero) {
+        if (genero == null || genero.isEmpty()) return true;
+        return genero.equalsIgnoreCase(p.getGenero());
+    }
+
+
+    // -------------------------------
+    // FAIXA ETÁRIA (inclui 17 anos corretamente)
+    // -------------------------------
+    private boolean filtrarFaixaEtaria(Paciente p, String faixaEtaria) {
+        if (faixaEtaria == null || faixaEtaria.isEmpty()) return true;
+
+        int idade = calcularIdade(p.getDataNascimento());
+
+        switch (faixaEtaria.toLowerCase()) {
+            case "menores de 18":
+                return idade < 18;
+
+            case "18–30":
+                return idade >= 18 && idade <= 30;
+
+            case "31–50":
+                return idade >= 31 && idade <= 50;
+
+            case "acima de 50":
+                return idade > 50;
+
+            default:
+                return true;
+        }
+    }
+
+
+
+    // -------------------------------
+    // STATUS
+    // -------------------------------
+    private boolean filtrarStatus(Paciente p, String status) {
+        if (status == null || status.isEmpty()) return true;
+
+        if (status.equalsIgnoreCase("ativo"))
+            return p.isAtivo();
+
+        if (status.equalsIgnoreCase("inativo"))
+            return p.isInativo();
+
+        return true;
+    }
+
+
+    // -------------------------------
+    // CÁLCULO DE IDADE
+    // -------------------------------
+    private int calcularIdade(LocalDate nascimento) {
+        if (nascimento == null) return 0;
+        return Period.between(nascimento, LocalDate.now()).getYears();
     }
 }

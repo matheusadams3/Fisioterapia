@@ -9,31 +9,33 @@ public class PacienteDTO {
     private Long id;
     private String nomeCompleto;
     private LocalDate dataNascimento;
-    private LocalTime horarioAtendimento;
+    private LocalTime horarioInicio;
+    private LocalTime horarioFim;
     private String telefone;
     private String endereco;
     private String genero;
     private String observacoesGerais;
     private String sobreOPaciente;
-    private Boolean possuiDiabetes;
-    private Boolean menorDe18Anos;
-    private Boolean emDestaque;
+    private boolean possuiDiabetes;
+    private boolean menorDe18Anos;
+    private boolean emDestaque;
     private Integer idade;
 
     public PacienteDTO(Paciente paciente) {
         this.id = paciente.getId();
         this.nomeCompleto = paciente.getNomeCompleto();
         this.dataNascimento = paciente.getDataNascimento();
-        this.horarioAtendimento = paciente.getHorarioAtendimento();
+        this.horarioInicio = paciente.getHorarioInicio();
+        this.horarioFim = paciente.getHorarioFim();
         this.telefone = paciente.getTelefone();
         this.endereco = paciente.getEndereco();
         this.genero = paciente.getGenero();
         this.observacoesGerais = paciente.getObservacoesGerais();
         this.sobreOPaciente = paciente.getSobreOPaciente();
-        this.possuiDiabetes = paciente.getPossuiDiabetes();
-        this.menorDe18Anos = paciente.getMenorDe18Anos();
-        this.emDestaque = paciente.getEmDestaque();
-        
+        this.possuiDiabetes = paciente.isPossuiDiabetes();
+        this.menorDe18Anos = paciente.isMenorDe18Anos();
+        this.emDestaque = paciente.isEmDestaque();
+
         // Calcular idade
         if (paciente.getDataNascimento() != null) {
             this.idade = Period.between(paciente.getDataNascimento(), LocalDate.now()).getYears();
@@ -53,8 +55,12 @@ public class PacienteDTO {
         return dataNascimento;
     }
 
-    public LocalTime getHorarioAtendimento() {
-        return horarioAtendimento;
+    public LocalTime getHorarioInicio() {
+        return horarioInicio;
+    }
+
+    public LocalTime getHorarioFim() {
+        return horarioFim;
     }
 
     public String getTelefone() {
@@ -77,15 +83,15 @@ public class PacienteDTO {
         return sobreOPaciente;
     }
 
-    public Boolean getPossuiDiabetes() {
+    public boolean getPossuiDiabetes() {
         return possuiDiabetes;
     }
 
-    public Boolean getMenorDe18Anos() {
+    public boolean getMenorDe18Anos() {
         return menorDe18Anos;
     }
 
-    public Boolean getEmDestaque() {
+    public boolean getEmDestaque() {
         return emDestaque;
     }
 

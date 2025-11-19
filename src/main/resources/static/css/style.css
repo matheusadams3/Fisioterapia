@@ -10,6 +10,24 @@ body {
   border-top-right-radius: 40px;
   border-bottom-right-radius: 40px;
 }
+#legendaDestaque {
+    font-size: 16px;
+    font-weight: 500;
+    color: #007bff;  /* Cor azul para destacar */
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;  /* Espaçamento abaixo da legenda */
+}
+
+#legendaDestaque i {
+    font-size: 20px;
+    color: #007bff;  /* Azul para o ícone de estrela */
+}
+
+#legendaDestaque span {
+    margin-left: 8px;
+}
+
 
 .logo-container {
   text-align: center;
@@ -40,6 +58,19 @@ body {
 main h2 {
   color: #333;
 }
+
+#tabelaContainer {
+    margin-bottom: 0 !important; /* Remove qualquer margem extra abaixo da tabela */
+}
+
+#legendaDestaque {
+    margin-bottom: 0; /* Remover margens extras da legenda */
+}
+
+main {
+    padding-bottom: 0 !important; /* Certifique-se de que não haja padding extra abaixo da área principal */
+}
+
 
 .btn-primary {
   background-color: #4a90e2;

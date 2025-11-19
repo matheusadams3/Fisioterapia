@@ -1,738 +1,244 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pacientes - Clínica</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/src/main/resources/static/css/style.css" />
-  </head>
-  <body>
-    <div class="d-flex">
-      <aside class="sidebar d-flex flex-column align-items-center p-3">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+</head>
+
+<body>
+<div class="d-flex">
+    <aside class="sidebar d-flex flex-column align-items-center p-3">
         <div class="logo-container">
-          <img
-            src="/src/main/resources/static/images/logo-fisiologia.jpg"
-            alt="Logo"
-            class="logo-img"
-          />
+            <img src="/images/logo-fisiologia.jpg" alt="Logo" class="logo-img" />
         </div>
 
         <ul class="nav flex-column w-100">
-          <li class="nav-item mb-2">
-            <a
-              href="#"
-              class="nav-link text-white d-flex align-items-center px-3"
-            >
-              <i class="bi bi-house me-2"></i> Início
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              href="#"
-              class="nav-link active text-white d-flex align-items-center px-3"
-            >
-              <i class="bi bi-person me-2"></i> Pacientes
-            </a>
-          </li>
+            <li class="nav-item mb-2">
+                <a href="#" class="nav-link text-white d-flex align-items-center px-3">
+                    <i class="bi bi-house me-2"></i> Início
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link active text-white d-flex align-items-center px-3">
+                    <i class="bi bi-person me-2"></i> Pacientes
+                </a>
+            </li>
         </ul>
-      </aside>
+    </aside>
 
-      <!-- Main content -->
-      <main class="flex-grow-1 p-4">
-        <!-- Cabeçalho -->
+    <main class="flex-grow-1 p-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <h2 class="fw-semibold">Pacientes</h2>
+            <h2 class="fw-semibold">Pacientes</h2>
         </div>
 
-        <!-- Linha de filtros, busca e botão -->
         <div class="d-flex align-items-center gap-3 mb-4">
-          <button
-            class="btn btn-outline-secondary d-flex align-items-center"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasFiltros"
-          >
-            <i class="bi bi-funnel me-2"></i> Filtros
-          </button>
+            <button class="btn btn-outline-secondary d-flex align-items-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFiltros">
+                <i class="bi bi-funnel me-2"></i> Filtros
+            </button>
 
-          <!-- Offcanvas de Filtros -->
-          <div
-            class="offcanvas offcanvas-start"
-            tabindex="-1"
-            id="offcanvasFiltros"
-            aria-labelledby="offcanvasFiltrosLabel"
-          >
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasFiltrosLabel">
-                Filtros
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="offcanvas"
-                aria-label="Fechar"
-              ></button>
-            </div>
-            <div class="offcanvas-body">
-              <form>
-                <div class="mb-3">
-                  <label class="form-label">Gênero</label>
-                  <select class="form-select" id="filtroGenero">
-                    <option value="">Todos</option>
-                    <option>Masculino</option>
-                    <option>Feminino</option>
-                  </select>
+            <!-- Offcanvas Filtros -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasFiltros">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">Filtros</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
                 </div>
 
-                <div class="mb-3">
-                  <label class="form-label">Faixa etária</label>
-                  <select class="form-select" id="filtroIdade">
-                    <option value="">Todas</option>
-                    <option>Menores de 18</option>
-                    <option>18–30</option>
-                    <option>31–50</option>
-                    <option>Acima de 50</option>
-                  </select>
+                <div class="offcanvas-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Gênero</label>
+                            <select class="form-select" id="filtroGenero">
+                                <option value="">Todos</option>
+                                <option>Masculino</option>
+                                <option>Feminino</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Faixa etária</label>
+                            <select class="form-select" id="filtroIdade">
+                                <option value="">Todas</option>
+                                <option>Menores de 18</option>
+                                <option>18–30</option>
+                                <option>31–50</option>
+                                <option>Acima de 50</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" id="filtroStatus">
+                                <option value="">Todos</option>
+                                <option>Ativo</option>
+                                <option>Inativo</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Aplicar filtros</button>
+                    </form>
                 </div>
+            </div>
 
-                <div class="mb-3">
-                  <label class="form-label">Status</label>
-                  <select class="form-select" id="filtroStatus">
-                    <option value="">Todos</option>
-                    <option>Ativo</option>
-                    <option>Inativo</option>
-                  </select>
+            <!-- Barra busca -->
+            <div class="flex-grow-1">
+                <div class="search-bar position-relative" style="max-width: 400px">
+                    <input id="campoBusca" type="text" class="form-control ps-5 pe-5" placeholder="Buscar paciente..." />
+                    <button type="button" id="btnBuscar" class="btn btn-link position-absolute top-50 start-0 translate-middle-y ms-2 text-primary p-0">
+                        <i class="bi bi-search fs-5"></i>
+                    </button>
                 </div>
-
-                <button type="submit" class="btn btn-primary w-100">
-                  Aplicar filtros
-                </button>
-              </form>
             </div>
-          </div>
-          <!-- Barra de pesquisa -->
-          <div class="flex-grow-1">
-            <div class="search-bar position-relative" style="max-width: 400px">
-              <input
-                type="text"
-                class="form-control ps-5 pe-5"
-                placeholder="Buscar paciente..."
-              />
-              <button
-                type="button"
-                class="btn btn-link position-absolute top-50 start-0 translate-middle-y ms-2 text-primary p-0"
-                id="btnBuscar"
-              >
-                <i class="bi bi-search fs-5"></i>
-              </button>
-            </div>
-          </div>
 
-          <!-- Botão Adicionar Paciente -->
-          <button
-            class="btn btn-primary d-flex align-items-center"
-            data-bs-toggle="modal"
-            data-bs-target="#modalAdicionarPaciente"
-          >
-            <i class="bi bi-person-plus me-2"></i> Adicionar paciente
-          </button>
+            <button class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modalAdicionarPaciente">
+                <i class="bi bi-person-plus me-2"></i> Adicionar paciente
+            </button>
         </div>
 
-        <!-- Estado vazio -->
         <div id="mensagemVazia" class="text-center mt-5">
-          <h5 class="fw-semibold text-secondary">
-            Sem pacientes por enquanto...
-          </h5>
-          <p class="text-muted">
-            Eles irão aparecer assim que você adicioná-los!
-          </p>
+            <h5 class="fw-semibold text-secondary">Sem pacientes por enquanto...</h5>
+            <p class="text-muted">Eles irão aparecer assim que você adicioná-los!</p>
         </div>
 
-        <section
-          id="tabelaContainer"
-          class="tabela-pacientes mt-4"
-          style="display: none"
-        >
-          <div class="table-responsive shadow-sm rounded">
-            <table class="table align-middle table-custom">
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>Telefone</th>
-                  <th>Endereço</th>
-                  <th>Observações</th>
-                  <th>Idade</th>
-                  <th>Horário</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Lilian M. Brandão</td>
-                  <td>(34) 9 2345–6789</td>
-                  <td>Rua das Flores, 250</td>
-                  <td>Paciente com diabetes</td>
-                  <td>34</td>
-                  <td>09:00–10:00</td>
-                  <td>
-                    <button class="btn btn-sm btn-outline-primary">
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Maria J. L. Rodrigues</td>
-                  <td>(34) 9 2109–8765</td>
-                  <td>Av. Minas Gerais, 120</td>
-                  <td>------</td>
-                  <td>46</td>
-                  <td>11:00–11:00</td>
-                  <td>
-                    <button class="btn btn-sm btn-outline-primary">
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Paulo G. Rodrigues</td>
-                  <td>(34) 9 5432–1098</td>
-                  <td>R. Rio de Janeiro, 280</td>
-                  <td>------</td>
-                  <td>30</td>
-                  <td>11:00–11:00</td>
-                  <td>
-                    <button class="btn btn-sm btn-outline-primary">
-                      <i class="bi bi-pencil"></i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <section id="tabelaContainer" class="tabela-pacientes mt-4" style="display:none;">
+            <div class="table-responsive shadow-sm rounded">
+                <section id="legendaDestaque" class="mt-4">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-star-fill text-primary"></i>  <!-- Mudei a cor para azul -->
+                        <span class="ms-2">Paciente com diabetes</span>
+                    </div>
+                </section>
+                <table class="table align-middle table-custom">
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Endereço</th>
+                        <th>Observações</th>
+                        <th>Idade</th>
+                        <th>Horário</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </section>
-      </main>
-    </div>
+    </main>
+</div>
 
-    <!-- Modal Adicionar Paciente -->
-    <div
-      class="modal fade"
-      id="modalAdicionarPaciente"
-      tabindex="-1"
-      aria-labelledby="modalAdicionarPacienteLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-xl modal-dialog-centered">
+<!-- Modal Adicionar Paciente -->
+<div class="modal fade" id="modalAdicionarPaciente" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content p-3">
-          <div class="modal-header border-0 pb-0">
-            <h5
-              class="modal-title fw-semibold"
-              id="modalAdicionarPacienteLabel"
-            >
-              Adicionar paciente
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Fechar"
-            ></button>
-          </div>
 
-          <div class="modal-body pt-2">
-            <form id="formPaciente">
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label">Nome completo</label>
-                  <input type="text" class="form-control" id="nomePaciente" />
-                </div>
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-semibold">Adicionar paciente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
 
-                <div class="col-md-3">
-                  <label class="form-label">Data de nascimento</label>
-                  <input type="date" class="form-control" id="dataNascimento" />
-                </div>
+            <div class="modal-body">
+                <form id="formPaciente">
+                    <input type="hidden" id="idPaciente" />
 
-                <div class="col-md-3">
-                  <label class="form-label">Horário</label>
-                  <div class="d-flex align-items-center gap-2">
-                    <input
-                      type="time"
-                      class="form-control"
-                      id="horarioInicio"
-                    />
-                    <span>-</span>
-                    <input type="time" class="form-control" id="horarioFim" />
-                  </div>
-                </div>
+                    <div class="row g-3">
 
-                <div class="col-md-6">
-                  <label class="form-label">Telefone</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="telefonePaciente"
-                  />
-                </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Nome completo</label>
+                            <input type="text" class="form-control" id="nomePaciente" />
+                        </div>
 
-                <div class="col-md-6">
-                  <label class="form-label">Observações gerais</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="observacoesPaciente"
-                  />
-                </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Data de nascimento</label>
+                            <input type="date" class="form-control" id="dataNascimento" />
+                        </div>
 
-                <div class="col-md-6">
-                  <label class="form-label">Endereço</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="enderecoPaciente"
-                  />
-                </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Horário</label>
+                            <div class="d-flex align-items-center gap-2">
+                                <input type="time" class="form-control" id="horarioInicio" />
+                                <span>-</span>
+                                <input type="time" class="form-control" id="horarioFim" />
+                            </div>
+                        </div>
 
-                <div class="col-md-3">
-                  <label class="form-label">Telefone (secundário)</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="telefone2Paciente"
-                  />
-                </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Telefone</label>
+                            <input type="text" class="form-control" id="telefonePaciente" />
+                        </div>
 
-                <div class="col-md-3">
-                  <label class="form-label">Gênero</label>
-                  <select class="form-select" id="generoPaciente">
-                    <option selected disabled>Selecione</option>
-                    <option>Masculino</option>
-                    <option>Feminino</option>
-                    <option>Outro</option>
-                  </select>
-                </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Observações gerais</label>
+                            <input type="text" class="form-control" id="observacoesPaciente" />
+                        </div>
 
-                <!-- Linha com 'Sobre o paciente' e checkboxes -->
-                <div class="col-12 d-flex align-items-center gap-4">
-                  <div class="flex-grow-1">
-                    <label class="form-label">Sobre o paciente</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="sobrePaciente"
-                    />
-                  </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Endereço</label>
+                            <input type="text" class="form-control" id="enderecoPaciente" />
+                        </div>
 
-                  <div class="d-flex align-items-center gap-3 mt-4">
-                    <div class="form-check mb-0">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="diabetesPaciente"
-                      />
-                      <label class="form-check-label" for="diabetesPaciente">
-                        Possui diabetes?
-                      </label>
+                        <div class="col-md-3">
+                            <label class="form-label">Telefone (secundário)</label>
+                            <input type="text" class="form-control" id="telefone2Paciente" />
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="form-label">Gênero</label>
+                            <select class="form-select" id="generoPaciente">
+                                <option disabled selected>Selecione</option>
+                                <option>Masculino</option>
+                                <option>Feminino</option>
+                                <option>Outro</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 d-flex align-items-center gap-4">
+                            <div class="flex-grow-1">
+                                <label class="form-label">Sobre o paciente</label>
+                                <input type="text" class="form-control" id="sobrePaciente" />
+                            </div>
+
+                            <div class="col-12 d-flex align-items-center gap-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="diabetesPaciente" />
+                                    <label class="form-check-label">Possui diabetes?</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ativoPaciente" />
+                                    <label class="form-check-label">Está ativo?</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="novosCampos"></div>
+
+                        <div class="col-12">
+                            <button type="button" id="btnAdicionarCampo" class="btn btn-outline-secondary">
+                                <i class="bi bi-plus-circle me-2"></i> Adicionar outro campo
+                            </button>
+                        </div>
+
                     </div>
-                    <div class="form-check mb-0">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="ativoPaciente"
-                      />
-                      <label class="form-check-label" for="estaAtivo">
-                        Está ativo?
-                      </label>
-                    </div>
-                  </div>
-                </div>
 
-                <!-- Área para adicionar novos campos -->
-                <div id="novosCampos"></div>
-                <div class="col-12">
-                  <button
-                    type="button"
-                    class="btn btn-outline-secondary d-flex align-items-center"
-                    id="btnAdicionarCampo"
-                  >
-                    <i class="bi bi-plus-circle me-2"></i> Adicionar outro campo
-                  </button>
-                </div>
-              </div>
-              <div class="modal-footer border-0 pt-0">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Cancelar
-                </button>
-                <button type="submit" class="btn btn-primary">Próximo</button>
-              </div>
-            </form>
-          </div>
+                    <div class="modal-footer border-0 pt-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Próximo</button>
+                    </div>
+
+                </form>
+            </div>
+
         </div>
-      </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const form = document.getElementById("formPaciente");
-        const tabela = document.querySelector(".tabela-pacientes tbody");
-        const mensagemVazia = document.getElementById("mensagemVazia");
-        const novosCamposContainer = document.getElementById("novosCampos");
-        const btnAdicionarCampo = document.getElementById("btnAdicionarCampo");
-
-        let linhaEditando = null;
-
-        tabela.innerHTML = "";
-        atualizarMensagemPacientes();
-
-        btnAdicionarCampo.addEventListener("click", () => {
-          const novoCampo = criarCampoDinamico("", "");
-          novosCamposContainer.appendChild(novoCampo);
-        });
-
-        function criarCampoDinamico(titulo = "Novo campo", valor = "") {
-          const novoCampo = document.createElement("div");
-          novoCampo.classList.add("col-md-6", "mt-2");
-
-          novoCampo.innerHTML = `
-    <div class="d-flex align-items-center justify-content-between mb-1">
-      <input
-        type="text"
-        class="form-control form-control-sm me-2 field-title-input"
-        value="${titulo}"
-        placeholder="Nome do campo"
-      />
-      <div class="d-flex gap-1">
-        <button type="button" class="btn btn-success btn-sm btn-save" title="Salvar">
-          <i class="bi bi-check-lg"></i>
-        </button>
-        <button type="button" class="btn btn-danger btn-sm btn-delete" title="Excluir">
-          <i class="bi bi-trash"></i>
-        </button>
-      </div>
-    </div>
-    <input type="text" class="form-control" placeholder="Digite algo" value="${valor}">
-  `;
-
-          const inputTitulo = novoCampo.querySelector(".field-title-input");
-          const btnSalvar = novoCampo.querySelector(".btn-save");
-          const btnExcluir = novoCampo.querySelector(".btn-delete");
-
-          btnExcluir.addEventListener("click", () => novoCampo.remove());
-
-          btnSalvar.addEventListener("click", () => {
-            const nomeCampo = inputTitulo.value.trim() || "Campo sem nome";
-
-            const header = document.createElement("div");
-            header.classList.add(
-              "d-flex",
-              "align-items-center",
-              "justify-content-between",
-              "mb-1"
-            );
-
-            const label = document.createElement("label");
-            label.classList.add("form-label", "mb-0");
-            label.textContent = nomeCampo;
-
-            const actions = document.createElement("div");
-            actions.classList.add("d-flex", "gap-1");
-
-            const btnEdit = document.createElement("button");
-            btnEdit.type = "button";
-            btnEdit.className = "btn btn-outline-secondary btn-sm";
-            btnEdit.innerHTML = '<i class="bi bi-pencil"></i>';
-
-            const btnDel = document.createElement("button");
-            btnDel.type = "button";
-            btnDel.className = "btn btn-outline-danger btn-sm";
-            btnDel.innerHTML = '<i class="bi bi-trash"></i>';
-
-            actions.appendChild(btnEdit);
-            actions.appendChild(btnDel);
-
-            header.appendChild(label);
-            header.appendChild(actions);
-
-            const headerOriginal = novoCampo.querySelector(".d-flex");
-
-            headerOriginal.replaceWith(header);
-
-            btnEdit.addEventListener("click", () => {
-              header.replaceWith(headerOriginal);
-            });
-
-            btnDel.addEventListener("click", () => novoCampo.remove());
-          });
-
-          return novoCampo;
-        }
-
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          const nome = document.getElementById("nomePaciente").value.trim();
-          const telefone = document
-            .getElementById("telefonePaciente")
-            .value.trim();
-          const endereco = document
-            .getElementById("enderecoPaciente")
-            .value.trim();
-          const observacoes = document
-            .getElementById("observacoesPaciente")
-            .value.trim();
-          const dataNascimento =
-            document.getElementById("dataNascimento").value;
-
-          const horarioInicio = document.getElementById("horarioInicio").value;
-          const horarioFim = document.getElementById("horarioFim").value;
-
-          const possuiDiabetes =
-            document.getElementById("diabetesPaciente").checked;
-
-          const estaAtivo = document.getElementById("ativoPaciente").checked;
-
-          const horario =
-            horarioInicio && horarioFim
-              ? `${horarioInicio} - ${horarioFim}`
-              : "—";
-
-          if (!nome) {
-            alert("Por favor, preencha o nome.");
-            return;
-          }
-
-          let idade = "—";
-          if (dataNascimento) {
-            const nascimento = new Date(dataNascimento);
-            const hoje = new Date();
-            idade = hoje.getFullYear() - nascimento.getFullYear();
-            const m = hoje.getMonth() - nascimento.getMonth();
-            if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate()))
-              idade--;
-          }
-
-          const classeDiabetes = possuiDiabetes ? "bg-diabetes" : "";
-
-          if (linhaEditando) {
-            linhaEditando.dataset.diabetes = possuiDiabetes;
-            linhaEditando.cells[0].classList.remove("bg-diabetes");
-            if (possuiDiabetes) {
-              linhaEditando.cells[0].classList.add("bg-diabetes");
-            }
-            linhaEditando.cells[0].textContent = nome;
-            linhaEditando.cells[1].textContent = telefone;
-            linhaEditando.cells[2].textContent = endereco;
-            linhaEditando.cells[3].textContent = observacoes;
-            linhaEditando.cells[4].textContent = idade;
-            linhaEditando.cells[5].textContent = horario;
-            linhaEditando = null;
-          } else {
-            const generoPaciente =
-              document.getElementById("generoPaciente").value;
-
-            const novaLinha = document.createElement("tr");
-            novaLinha.dataset.genero =
-              generoPaciente && generoPaciente !== "Selecione"
-                ? generoPaciente.toLowerCase()
-                : "";
-            novaLinha.dataset.status = estaAtivo ? "ativo" : "inativo";
-
-            novaLinha.innerHTML = `
-      <td class="${classeDiabetes}">${nome}</td>
-      <td>${telefone}</td>
-      <td>${endereco}</td>
-      <td>${observacoes}</td>
-      <td>${idade}</td>
-      <td>${horario}</td>
-      <td>
-        <button class="btn btn-sm btn-outline-primary btn-editar">
-          <i class="bi bi-pencil"></i>
-        </button>
-        <button class="btn btn-sm btn-outline-danger btn-excluir ms-1">
-          <i class="bi bi-trash"></i>
-        </button>
-      </td>
-    `;
-
-            adicionarEventosLinha(novaLinha);
-            tabela.appendChild(novaLinha);
-          }
-
-          atualizarMensagemPacientes();
-
-          const modal = bootstrap.Modal.getInstance(
-            document.getElementById("modalAdicionarPaciente")
-          );
-          modal.hide();
-
-          form.reset();
-          novosCamposContainer.innerHTML = "";
-        });
-
-        function adicionarEventosLinha(linha) {
-          const btnExcluir = linha.querySelector(".btn-excluir");
-          const btnEditar = linha.querySelector(".btn-editar");
-
-          btnExcluir.addEventListener("click", () => {
-            linha.remove();
-            atualizarMensagemPacientes();
-          });
-
-          btnEditar.addEventListener("click", () => {
-            linhaEditando = linha;
-
-            const camposExtras = JSON.parse(linha.dataset.camposExtras || "[]");
-
-            form.reset();
-            novosCamposContainer.innerHTML = "";
-
-            document.getElementById("nomePaciente").value =
-              linha.cells[0].textContent;
-            document.getElementById("telefonePaciente").value =
-              linha.cells[1].textContent;
-            document.getElementById("enderecoPaciente").value =
-              linha.cells[2].textContent;
-            document.getElementById("observacoesPaciente").value =
-              linha.cells[3].textContent;
-            const horarioTexto = linha.cells[5].textContent.trim();
-            if (horarioTexto.includes("-")) {
-              const [inicio, fim] = horarioTexto
-                .split("-")
-                .map((h) => h.trim());
-              document.getElementById("horarioInicio").value = inicio;
-              document.getElementById("horarioFim").value = fim;
-            }
-
-            camposExtras.forEach((campo) => {
-              const novoCampo = criarCampoDinamico(campo.label, campo.valor);
-              novosCamposContainer.appendChild(novoCampo);
-            });
-
-            const modal = new bootstrap.Modal(
-              document.getElementById("modalAdicionarPaciente")
-            );
-            modal.show();
-          });
-        }
-
-        function atualizarMensagemPacientes() {
-          const temLinhas = tabela.querySelectorAll("tr").length > 0;
-          mensagemVazia.style.display = temLinhas ? "none" : "block";
-          document.getElementById("tabelaContainer").style.display = temLinhas
-            ? "block"
-            : "none";
-        }
-
-        document
-          .getElementById("modalAdicionarPaciente")
-          .addEventListener("hidden.bs.modal", () => {
-            form.reset();
-            novosCamposContainer.innerHTML = "";
-            linhaEditando = null;
-          });
-      });
-
-      function aplicarMascaraTelefone(input) {
-        input.addEventListener("input", (e) => {
-          let valor = e.target.value.replace(/\D/g, ""); // remove tudo que não é número
-
-          if (valor.length > 11) valor = valor.slice(0, 11); // limita a 11 dígitos
-
-          if (valor.length > 10) {
-            valor = valor.replace(/^(\d{2})(\d{5})(\d{4}).*/, "($1) $2-$3");
-          } else if (valor.length > 6) {
-            valor = valor.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, "($1) $2-$3");
-          } else if (valor.length > 2) {
-            valor = valor.replace(/^(\d{2})(\d{0,5})/, "($1) $2");
-          } else {
-            valor = valor.replace(/^(\d*)/, "($1");
-          }
-
-          e.target.value = valor;
-        });
-        input.addEventListener("keypress", (e) => {
-          if (!/\d/.test(e.key)) {
-            e.preventDefault();
-          }
-        });
-      }
-
-      const telefone1 = document.getElementById("telefonePaciente");
-      const telefone2 = document.getElementById("telefone2Paciente");
-      aplicarMascaraTelefone(telefone1);
-      aplicarMascaraTelefone(telefone2);
-
-      document
-        .querySelector("#offcanvasFiltros form")
-        .addEventListener("submit", (ev) => {
-          ev.preventDefault();
-
-          const generoFiltro = document.getElementById("filtroGenero").value;
-          const idadeFiltro = document.getElementById("filtroIdade").value;
-          const statusFiltro = document.getElementById("filtroStatus").value;
-
-          const linhas = document.querySelectorAll(
-            ".tabela-pacientes tbody tr"
-          );
-
-          linhas.forEach((linha) => {
-            const idade = parseInt(linha.cells[4].innerText);
-            const observacoes = linha.cells[3].innerText.toLowerCase();
-            const nome = linha.cells[0].innerText.toLowerCase();
-
-            let mostrar = true;
-
-            if (generoFiltro !== "") {
-              const generoLinha = linha.dataset.genero;
-
-              if (!generoLinha) {
-                mostrar = false;
-              } else {
-                if (generoLinha.toLowerCase() !== generoFiltro.toLowerCase()) {
-                  mostrar = false;
-                }
-              }
-            }
-
-            if (idadeFiltro !== "") {
-              if (idadeFiltro === "Menores de 18" && !(idade < 18))
-                mostrar = false;
-              if (idadeFiltro === "18–30" && !(idade >= 18 && idade <= 30))
-                mostrar = false;
-              if (idadeFiltro === "31–50" && !(idade >= 31 && idade <= 50))
-                mostrar = false;
-              if (idadeFiltro === "Acima de 50" && !(idade > 50))
-                mostrar = false;
-            }
-
-            if (statusFiltro !== "") {
-              const statusLinha = linha.dataset.status || "";
-
-              if (statusFiltro.toLowerCase() !== statusLinha.toLowerCase()) {
-                mostrar = false;
-              }
-            }
-
-            linha.style.display = mostrar ? "" : "none";
-          });
-
-          const offcanvas = bootstrap.Offcanvas.getInstance(
-            document.getElementById("offcanvasFiltros")
-          );
-          offcanvas.hide();
-        });
-    </script>
-
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-  </body>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/pacientes.js"></script>
+</body>
 </html>
