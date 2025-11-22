@@ -14,17 +14,11 @@ public class Paciente {
 
     private String nomeCompleto;
     private LocalDate dataNascimento;
-    private LocalTime horarioInicio;
-    private LocalTime horarioFim;
     private String telefone;
     private String endereco;
     private String genero;
     private String observacoesGerais;
-
-    private boolean ativo = true;       // <-- OK
-    private boolean inativo = false;    // <-- OK (sem @Column TEXT!!)
-
-    private String sobreOPaciente;
+    private String sobrePaciente;
     private boolean possuiDiabetes = false;
     private boolean menorDe18Anos = false;
     private boolean emDestaque = false;
@@ -50,12 +44,6 @@ public class Paciente {
     public LocalDate getDataNascimento() { return dataNascimento; }
     public void setDataNascimento(LocalDate dataNascimento) { this.dataNascimento = dataNascimento; }
 
-    public LocalTime getHorarioInicio() { return horarioInicio; }
-    public void setHorarioInicio(LocalTime horarioInicio) { this.horarioInicio = horarioInicio; }
-
-    public LocalTime getHorarioFim() { return horarioFim; }
-    public void setHorarioFim(LocalTime horarioFim) { this.horarioFim = horarioFim; }
-
     public String getTelefone() { return telefone; }
     public void setTelefone(String telefone) { this.telefone = telefone; }
 
@@ -68,14 +56,8 @@ public class Paciente {
     public String getObservacoesGerais() { return observacoesGerais; }
     public void setObservacoesGerais(String observacoesGerais) { this.observacoesGerais = observacoesGerais; }
 
-    public boolean isAtivo() { return ativo; }
-    public void setAtivo(boolean ativo) { this.ativo = ativo; }
-
-    public boolean isInativo() { return inativo; }
-    public void setInativo(boolean inativo) { this.inativo = inativo; }
-
-    public String getSobreOPaciente() { return sobreOPaciente; }
-    public void setSobreOPaciente(String sobreOPaciente) { this.sobreOPaciente = sobreOPaciente; }
+    public String getSobrePaciente() { return sobrePaciente; }
+    public void setSobrePaciente(String sobreOPaciente) { this.sobrePaciente = sobreOPaciente; }
 
     public boolean isPossuiDiabetes() { return possuiDiabetes; }
     public void setPossuiDiabetes(boolean possuiDiabetes) { this.possuiDiabetes = possuiDiabetes; }

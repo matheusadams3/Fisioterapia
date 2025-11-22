@@ -11,23 +11,22 @@ body {
   border-bottom-right-radius: 40px;
 }
 #legendaDestaque {
-    font-size: 16px;
-    font-weight: 500;
-    color: #007bff;  /* Cor azul para destacar */
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;  /* Espaçamento abaixo da legenda */
+  font-size: 16px;
+  font-weight: 500;
+  color: #007bff;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 #legendaDestaque i {
-    font-size: 20px;
-    color: #007bff;  /* Azul para o ícone de estrela */
+  font-size: 20px;
+  color: #007bff;
 }
 
 #legendaDestaque span {
-    margin-left: 8px;
+  margin-left: 8px;
 }
-
 
 .logo-container {
   text-align: center;
@@ -60,17 +59,16 @@ main h2 {
 }
 
 #tabelaContainer {
-    margin-bottom: 0 !important; /* Remove qualquer margem extra abaixo da tabela */
+  margin-bottom: 0 !important;
 }
 
 #legendaDestaque {
-    margin-bottom: 0; /* Remover margens extras da legenda */
+  margin-bottom: 0;
 }
 
 main {
-    padding-bottom: 0 !important; /* Certifique-se de que não haja padding extra abaixo da área principal */
+  padding-bottom: 0 !important;
 }
-
 
 .btn-primary {
   background-color: #4a90e2;
@@ -213,6 +211,7 @@ main {
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
+  width: 100% !important;
 }
 
 .table-custom thead {
@@ -233,15 +232,6 @@ main {
   vertical-align: middle;
 }
 
-.table-custom tbody tr:nth-child(even) {
-  background-color: #f9f9fb;
-}
-
-.table-custom tbody tr:hover {
-  background-color: #eef4ff;
-  transition: 0.2s;
-}
-
 .table-custom button {
   border-radius: 6px;
   padding: 4px 8px;
@@ -257,12 +247,12 @@ main {
   border-color: #4a90e2;
 }
 
-.tabela-pacientes h2 {
+.tabelaPacientes h2 {
   color: #112052;
   font-weight: 600;
 }
 
-.tabela-pacientes .search-bar input {
+.tabelaPacientes .search-bar input {
   max-width: 300px;
   border-radius: 30px;
   padding-left: 15px;
@@ -365,5 +355,88 @@ main {
 
 .table-custom td.bg-diabetes {
   background-color: #3c84d6 !important;
+  color: white !important;
+}
+
+.table-responsive {
+  background-color: #f9f9fb;
+  padding-right: 0 !important;
+}
+
+/* --- Modal Registro do Paciente (sempre deixar no final!) --- */
+.modal-registro-paciente {
+  border-radius: 16px;
+  padding: 10px 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+.modal-registro-paciente .fw-semibold {
+  font-size: 1rem;
+}
+
+.modal-registro-paciente span {
+  font-weight: 500;
+  color: #333;
+}
+
+.modal-registro-paciente .form-control {
+  background: #f6f7fb;
+  border: 1px solid #dce0e6;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+.modal-registro-paciente .form-control[readonly] {
+  background: #eef1f5;
+  cursor: default;
+}
+
+.modal-registro-paciente .form-control:disabled {
+  background: #eef1f5;
+  color: #777;
+  opacity: 1;
+}
+
+.modal-registro-paciente .form-control:not(:disabled) {
+  background: #fff;
+  border-color: #6ea8fe;
+}
+
+.modal-registro-paciente .form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25);
+}
+
+.modal-registro-paciente .modal-footer button {
+  min-width: 120px;
+}
+
+.modal-registro-paciente .label-row {
+  height: 38px;
+  display: flex;
+  align-items: center;
+}
+
+.modal-tamanho-personalizado {
+  max-width: 600px;
+}
+
+.modal-tamanho-personalizado .modal-content {
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.table-custom tbody tr:hover td {
+  background-color: #0059ff !important;
+  color: white !important;
+}
+
+.table-custom tbody tr:hover td input {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+.table-custom tbody tr:hover td button {
+  background-color: transparent !important;
   color: white !important;
 }

@@ -46,12 +46,11 @@ public class PacienteService {
     // ---------------------------------------------------------
     // 🎯 FILTRO COMPLETO: GÊNERO | FAIXA ETÁRIA | STATUS
     // ---------------------------------------------------------
-    public List<Paciente> filtrarPacientes(String genero, String faixaEtaria, String status) {
+    public List<Paciente> filtrarPacientes(String genero, String faixaEtaria) {
 
         return pacienteRepository.findAll().stream()
                 .filter(p -> filtrarGenero(p, genero))
                 .filter(p -> filtrarFaixaEtaria(p, faixaEtaria))
-                .filter(p -> filtrarStatus(p, status))
                 .collect(Collectors.toList());
     }
 
@@ -90,24 +89,6 @@ public class PacienteService {
                 return true;
         }
     }
-
-
-
-    // -------------------------------
-    // STATUS
-    // -------------------------------
-    private boolean filtrarStatus(Paciente p, String status) {
-        if (status == null || status.isEmpty()) return true;
-
-        if (status.equalsIgnoreCase("ativo"))
-            return p.isAtivo();
-
-        if (status.equalsIgnoreCase("inativo"))
-            return p.isInativo();
-
-        return true;
-    }
-
 
     // -------------------------------
     // CÁLCULO DE IDADE

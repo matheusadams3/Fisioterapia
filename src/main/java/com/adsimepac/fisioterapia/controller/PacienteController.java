@@ -42,19 +42,14 @@ public class PacienteController {
                     // Copia as propriedades do objeto recebido para o objeto existente
                     pacienteExistente.setNomeCompleto(dadosAtualizados.getNomeCompleto());
                     pacienteExistente.setDataNascimento(dadosAtualizados.getDataNascimento());
-                    pacienteExistente.setHorarioInicio(dadosAtualizados.getHorarioInicio());
-                    pacienteExistente.setHorarioFim(dadosAtualizados.getHorarioFim());
                     pacienteExistente.setTelefone(dadosAtualizados.getTelefone());
                     pacienteExistente.setEndereco(dadosAtualizados.getEndereco());
                     pacienteExistente.setGenero(dadosAtualizados.getGenero());
                     pacienteExistente.setObservacoesGerais(dadosAtualizados.getObservacoesGerais());
-                    pacienteExistente.setSobreOPaciente(dadosAtualizados.getSobreOPaciente());
+                    pacienteExistente.setSobrePaciente(dadosAtualizados.getSobrePaciente());
                     pacienteExistente.setPossuiDiabetes(dadosAtualizados.isPossuiDiabetes());
                     pacienteExistente.setMenorDe18Anos(dadosAtualizados.isMenorDe18Anos());
                     pacienteExistente.setEmDestaque(dadosAtualizados.isEmDestaque());
-                    pacienteExistente.setAtivo(dadosAtualizados.isAtivo());
-                    pacienteExistente.setInativo(dadosAtualizados.isInativo());
-
 
                     Paciente atualizado = pacienteService.save(pacienteExistente);
                     return ResponseEntity.ok(atualizado);
@@ -84,7 +79,7 @@ public class PacienteController {
             @RequestParam(required = false) String faixaEtaria,
             @RequestParam(required = false) String status
     ) {
-        return pacienteService.filtrarPacientes(genero, faixaEtaria, status);
+        return pacienteService.filtrarPacientes(genero, faixaEtaria);
     }
 
 

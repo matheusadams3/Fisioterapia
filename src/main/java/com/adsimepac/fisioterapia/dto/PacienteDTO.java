@@ -9,13 +9,11 @@ public class PacienteDTO {
     private Long id;
     private String nomeCompleto;
     private LocalDate dataNascimento;
-    private LocalTime horarioInicio;
-    private LocalTime horarioFim;
     private String telefone;
     private String endereco;
     private String genero;
     private String observacoesGerais;
-    private String sobreOPaciente;
+    private String sobrePaciente;
     private boolean possuiDiabetes;
     private boolean menorDe18Anos;
     private boolean emDestaque;
@@ -25,13 +23,11 @@ public class PacienteDTO {
         this.id = paciente.getId();
         this.nomeCompleto = paciente.getNomeCompleto();
         this.dataNascimento = paciente.getDataNascimento();
-        this.horarioInicio = paciente.getHorarioInicio();
-        this.horarioFim = paciente.getHorarioFim();
         this.telefone = paciente.getTelefone();
         this.endereco = paciente.getEndereco();
         this.genero = paciente.getGenero();
         this.observacoesGerais = paciente.getObservacoesGerais();
-        this.sobreOPaciente = paciente.getSobreOPaciente();
+        this.sobrePaciente = paciente.getSobrePaciente();
         this.possuiDiabetes = paciente.isPossuiDiabetes();
         this.menorDe18Anos = paciente.isMenorDe18Anos();
         this.emDestaque = paciente.isEmDestaque();
@@ -55,14 +51,6 @@ public class PacienteDTO {
         return dataNascimento;
     }
 
-    public LocalTime getHorarioInicio() {
-        return horarioInicio;
-    }
-
-    public LocalTime getHorarioFim() {
-        return horarioFim;
-    }
-
     public String getTelefone() {
         return telefone;
     }
@@ -80,7 +68,7 @@ public class PacienteDTO {
     }
 
     public String getSobreOPaciente() {
-        return sobreOPaciente;
+        return sobrePaciente;
     }
 
     public boolean getPossuiDiabetes() {
