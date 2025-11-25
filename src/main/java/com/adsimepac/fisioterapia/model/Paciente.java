@@ -67,5 +67,6 @@ public class Paciente {
 
     public boolean isEmDestaque() { return emDestaque; }
     public void setEmDestaque(boolean emDestaque) { this.emDestaque = emDestaque; }
+
 }
 
