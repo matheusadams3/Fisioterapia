@@ -281,4 +281,18 @@ document.addEventListener("DOMContentLoaded", () => {
      }
      document.getElementById("btnEditar").addEventListener("click", habilitarEdicao);
      document.getElementById("btnSalvar").addEventListener("click", salvarMedicao);
+
+     const btnProximo = document.querySelector("#modalAdicionarPaciente .btn-primary");
+
+       btnProximo.addEventListener("click", function (e) {
+         e.preventDefault(); // evita submit do form
+
+         // Fecha o primeiro modal
+         const modalAdicionar = bootstrap.Modal.getInstance(document.getElementById("modalAdicionarPaciente"));
+         modalAdicionar.hide();
+
+         // Abre o segundo modal
+         const modalAddRegistro = new bootstrap.Modal(document.getElementById("modalAddRegistroPaciente"));
+         modalAddRegistro.show();
+       });
 });
